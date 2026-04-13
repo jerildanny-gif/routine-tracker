@@ -1,0 +1,21 @@
+<h1>Routine Tracker</h1>
+
+<a href="/logout">Logout</a>
+
+<h3>Total: {{ total }} | Done: {{ done }}</h3>
+
+<form method="POST" action="/add">
+    <input type="text" name="name" placeholder="Task" required>
+    <input type="time" name="time" required>
+    <button>Add</button>
+</form>
+
+<ul>
+{% for task in tasks %}
+<li>
+    {{ task[1] }} ({{ task[4] }}) - {{ task[3] }}
+    <a href="/toggle/{{ task[0] }}">Toggle</a>
+    <a href="/delete/{{ task[0] }}">Delete</a>
+</li>
+{% endfor %}
+</ul>
